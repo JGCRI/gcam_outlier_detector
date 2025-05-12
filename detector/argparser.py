@@ -113,6 +113,14 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    "-h",
+    "--historical-year-end",
+    type=int,
+    help="The end year of the historical data. Default is 2020.",
+    default=2020,
+)
+
+parser.add_argument(
     "--graph-path",
     type=str,
     help="Path to save the graphs. Default is the current directory/graphs.",
