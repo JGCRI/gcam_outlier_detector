@@ -1,7 +1,5 @@
 /csvs
 /basex
 /graphs
-mapping_file.csv
-queries.xml
 detector/__pycache__
 container.sif

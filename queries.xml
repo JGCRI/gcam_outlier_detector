@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<queries>
+
+	<aQuery>
+    <emissionsQueryBuilder title="CO2 emissions by sector">
+        <axis1 name="sector">sector</axis1>
+        <axis2 name="Year">emissions</axis2>
+        <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+        <comments/>
+    </emissionsQueryBuilder>
+    </aQuery>
+
+    <aQuery>
+	<query title="nonCO2 AGR Emissions">
+          <axis1 name="GHG">GHG</axis1>
+          <axis2 name="Year">emissions</axis2>
+          <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG' 
+          and (@name='CH4_AGR' or @name='NH3_AGR' or @name='NOx_AGR' or @name='NMVOC_AGR' or @name='N2O_AGR')]/emissions/node()</xPath>
+          <comments/>
+          <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CH4_AGR" to="AGR"/>
+                    <rewrite from="NH3_AGR" to="AGR"/>
+                    <rewrite from="NOx_AGR" to="AGR"/>
+                    <rewrite from="NMVOC_AGR" to="AGR"/>
+                    <rewrite from="N2O_AGR" to="AGR"/>
+                </level>
+            </labelRewriteList>
+	</query>
+	</aQuery>
+
+    <aQuery>
+	<query title="nonCO2 AWB Emissions">
+          <axis1 name="GHG">GHG</axis1>
+          <axis2 name="Year">emissions</axis2>
+          <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG' 
+          and (@name = 'CH4_AWB' or @name = 'BC_AWB' or @name = 'CO_AWB' or @name = 'H2_AWB' or @name = 'N2O_AWB' or 
+          @name = 'NH3_AWB' or @name = 'NH3_AWB' or @name = 'NOx_AWB' or @name = 'NMVOC_AWB'or @name = 'OC_AWB' or 
+          @name = 'SO2_1_AWB')]/emissions/node()</xPath>
+          <comments/>
+          <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CH4_AWB" to="AWB"/>
+                    <rewrite from="BC_AWB" to="AWB"/>
+                    <rewrite from="CO_AWB" to="AWB"/>
+                    <rewrite from="H2_AWB" to="AWB"/>
+                    <rewrite from="N2O_AWB" to="AWB"/>
+                    <rewrite from="NH3_AWB" to="AWB"/>
+                    <rewrite from="NOx_AWB" to="AWB"/>
+                    <rewrite from="NMVOC_AWB" to="AWB"/>
+                    <rewrite from="OC_AWB" to="AWB"/>
+                    <rewrite from="SO2_1_AWB" to="AWB"/>
+                </level>
+            </labelRewriteList>
+	</query>
+	</aQuery>
+
+    <aQuery>
+	<query title="nonCO2 AGR Emissions">
+          <axis1 name="GHG">GHG</axis1>
+          <axis2 name="Year">emissions</axis2>
+          <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG' 
+          and (@name='NH3_AGR' or @name='NOx_AGR' or @name='NMVOC_AGR' or @name='N2O_AGR')]/emissions/node()</xPath>
+          <comments/>
+          <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="NH3_AGR" to="AGR"/>
+                    <rewrite from="NOx_AGR" to="AGR"/>
+                    <rewrite from="NMVOC_AGR" to="AGR"/>
+                    <rewrite from="N2O_AGR" to="AGR"/>
+                </level>
+            </labelRewriteList>
+	</query>
+	</aQuery>
+
+    <aQuery>
+	<query title="SO2 Emissions">
+          <axis1 name="GHG">GHG</axis1>
+          <axis2 name="Year">emissions</axis2>
+          <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG' 
+          and (@name='SO2_1' or @name='SO2_2' or @name='SO2_3' or @name='SO2_4' or @name='SO2_1_AWB' or @name='SO2_2_AWB' 
+          or @name='SO2_3_AWB' or @name='SO2_4_AWB')]/emissions/node()</xPath>
+          <comments/>
+          <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="SO2_1" to="SO2"/>
+                    <rewrite from="SO2_2" to="SO2"/>
+                    <rewrite from="SO2_3" to="SO2"/>
+                    <rewrite from="SO2_4" to="SO2"/>
+                    <rewrite from="SO2_1_AWB" to="SO2"/>
+                    <rewrite from="SO2_2_AWB" to="SO2"/>
+                    <rewrite from="SO2_3_AWB" to="SO2"/>
+                    <rewrite from="SO2_4_AWB" to="SO2"/>
+                </level>
+            </labelRewriteList>
+	</query>
+	</aQuery>
+
+    <aQuery>
+	<query title="NOx Emissions">
+          <axis1 name="GHG">GHG</axis1>
+          <axis2 name="Year">emissions</axis2>
+          <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG' 
+          and (@name='NOx' or @name='NOx_AGR' or @name='NOx_AWB')]/emissions/node()</xPath>
+          <comments/>
+          <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="NOx" to="NOx"/>
+                    <rewrite from="NOx_AGR" to="NOx"/>
+                    <rewrite from="NOx_AWB" to="NOx"/>
+                </level>
+            </labelRewriteList>
+	</query>
+	</aQuery>
+
+    <aQuery>
+	<all-regions/>
+         <gdpQueryBuilder title="GDP">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-mer" group="false" sumAll="false">nationalAccount/account[@name = 'GDP']/node()</xPath>
+            <comments/>
+         </gdpQueryBuilder>
+      </aQuery>
+
+    <aQuery>
+	<all-regions/>
+         <demographicsQuery title="Population">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+         </demographicsQuery>
+      </aQuery>
+
+    <aQuery>
+	<query title="HFC Emissions">
+          <axis1 name="GHG">GHG</axis1>
+          <axis2 name="Year">emissions</axis2>
+          <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG' 
+          and (@name='HFC125' or @name='HFC134a' or @name='HFC143a' or @name='HFC152a' or @name='HFC227ea' or 
+          @name='HFC23' or @name='HFC236fa' or @name='HFC245fa' or @name='HFC32' or @name='HFC365mfc' 
+          or @name='HFC43')]/emissions/node()</xPath>
+          <comments/>
+          <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="HFC125" to="HFC"/>
+                    <rewrite from="HFC134a" to="HFC"/>
+                    <rewrite from="HFC143a" to="HFC"/>
+                    <rewrite from="HFC152a" to="HFC"/>
+                    <rewrite from="HFC227ea" to="HFC"/>
+                    <rewrite from="HFC23" to="HFC"/>
+                    <rewrite from="HFC236fa" to="HFC"/>
+                    <rewrite from="HFC245fa" to="HFC"/>
+                    <rewrite from="HFC32" to="HFC"/>
+                    <rewrite from="HFC365mfc" to="HFC"/>
+                    <rewrite from="HFC43" to="HFC"/>
+                </level>
+            </labelRewriteList>
+	</query>
+	</aQuery>
+
+    <aQuery>
+	<query title="BC Emissions">
+          <axis1 name="GHG">GHG</axis1>
+          <axis2 name="Year">emissions</axis2>
+          <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG' 
+          and (@name='BC' or @name='BC_AGR' or @name='BC_AWB')]/emissions/node()</xPath>
+          <comments/>
+          <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="BC" to="BC"/>
+                    <rewrite from="BC_AWB" to="BC"/>
+                    <rewrite from="BC_AGR" to="BC"/>
+                </level>
+            </labelRewriteList>
+	</query>
+	</aQuery>
+
+    <aQuery>
+	<query title="CH4 Emissions">
+          <axis1 name="GHG">GHG</axis1>
+          <axis2 name="Year">emissions</axis2>
+          <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG' 
+          and (@name='CH4' or @name='CH4_AGR' or @name='CH4_AWB')]/emissions/node()</xPath>
+          <comments/>
+          <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CH4" to="CH4"/>
+                    <rewrite from="CH4_AWB" to="CH4"/>
+                    <rewrite from="CH4_AGR" to="CH4"/>
+                </level>
+            </labelRewriteList>
+	</query>
+	</aQuery>
+
+    <aQuery>
+	<query title="NH3 Emissions">
+          <axis1 name="GHG">GHG</axis1>
+          <axis2 name="Year">emissions</axis2>
+          <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG' 
+          and (@name='NH3' or @name='NH3_AGR' or @name='NH3_AWB')]/emissions/node()</xPath>
+          <comments/>
+          <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="NH3" to="NH3"/>
+                    <rewrite from="NH3_AWB" to="NH3"/>
+                    <rewrite from="NH3_AGR" to="NH3"/>
+                </level>
+            </labelRewriteList>
+	</query>
+	</aQuery>
+
+    <aQuery>
+	<query title="NMVOC Emissions">
+          <axis1 name="GHG">GHG</axis1>
+          <axis2 name="Year">emissions</axis2>
+          <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG' 
+          and (@name='NMVOC' or @name='NMVOC_AGR' or @name='NMVOC_AWB')]/emissions/node()</xPath>
+          <comments/>
+          <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="NMVOC" to="NMVOC"/>
+                    <rewrite from="NMVOC_AGR" to="NMVOC"/>
+                    <rewrite from="NMVOC_AWB" to="NMVOC"/>
+                </level>
+            </labelRewriteList>
+	</query>
+	</aQuery>
+
+    <aQuery>
+	<query title="N2O Emissions">
+          <axis1 name="GHG">GHG</axis1>
+          <axis2 name="Year">emissions</axis2>
+          <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']//*[@type = 'GHG' 
+          and (@name='N2O' or @name='N2O_AGR' or @name='N2O_AWB')]/emissions/node()</xPath>
+          <comments/>
+          <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="N2O" to="N2O"/>
+                    <rewrite from="N2O_AWB" to="N2O"/>
+                    <rewrite from="N2O_AGR" to="N2O"/>
+                </level>
+            </labelRewriteList>
+	</query>
+	</aQuery>
+
+    <aQuery>
+    <supplyDemandQuery title="primary energy consumption by region (avg fossil efficiency)">
+    <axis1 name="fuel">input[@name]</axis1>
+    <axis2 name="Year">demand-physical[@vintage]</axis2>
+    <xPath buildList="true" dataName="input" group="false" sumAll="false"><![CDATA[
+                     
+      	 	 	 declare function local:get-weighted-eff($outputs as node()*) as node()* {
+			 	 		   unordered {
+			 			     for $year in distinct-values($outputs/physical-output/@vintage)
+			 		             let $eff_unweight := sum(for $res in $outputs/physical-output[@vintage = $year]
+			 		                               let $eff_curr := $res/parent::*/following-sibling::input-energy[1]/IO-coefficient[@vintage = $year]
+			 		                               (: where $res/physical-output/@vintage = $year :)
+			 		                               return $res div $eff_curr),
+			 			             $weight := sum(for $res in $outputs/physical-output[@vintage = $year]
+			 		                         (: where $res/physical-output/@vintage = $year :)
+			 		                         return $res),
+			 			             $eff_weighted := $eff_unweight div $weight
+			 		             return element efficiency-weighted {attribute year { $year }, text { $eff_weighted }}
+			             		}
+			 	 	 };
+			 	 	 declare function local:append-heirarchy($parent as node(), $append as node()) as node() {
+			 	 		 let $scn := $parent/ancestor::scenario,
+			 			   	  $rgn := $parent/ancestor::region
+			 			   return
+			 			   	  document { element scenario {
+			 			 	  					$scn/@*,
+			 			 						element region {
+			 			 							$rgn/@*,
+			 			 							$append
+			 			 						}
+			 			 	  				}
+			 				}
+			 	 		 (: let $new_node := element {local-name($parent)} {$parent/@*, $append} 	
+			 	 		 return
+			 	 		 if(local-name($parent) != 'scenario')
+			 	 		 then local:append-heirarchy($parent/parent::*, $new_node)
+			 	 		 else document { $new_node } :)
+			 	 	 };  
+			 	 	 declare function local:get-primary-renewable($outputs as node()*, $weighted_effs as node()*) as node()* {
+			 	 	 unordered { 	
+			 	 	 for $output in $outputs (:,
+			 	 	 $weighted_eff in $weighted_effs :)
+			 	 	 let $new_output :=  (: element tempParent { :)
+			 	 	 element input {
+			 	 		 attribute type {'input'},
+			 	 		 attribute name {$output/parent::*/following-sibling::keyword/@primary-renewable},
+			 	 		 element demand-physical {
+			 	 			 attribute vintage {$output/@vintage},
+			 	 			 attribute unit {$output/@unit},
+			 	 			 text { $output div $weighted_effs[@year=$output/@vintage] }
+			 	 		 }(: ,
+			 	 		 element keyword {
+			 	 			 attribute primary-consumption { (: if($output/parent::*/following-sibling::keyword[fn:exists(@primary-renewable)])
+			 	 						 then :) $output/parent::*/following-sibling::keyword/@primary-renewable
+			 	 						 (: else $output/parent::*/parent::*/@name :)
+			 	 		       }
+			 	 		 } :)
+			 	 	 (: } :)
+			 	 	 },
+			 	 	 $new_root := local:append-heirarchy($output/parent::*/parent::*, $new_output)
+			 	 	 (:where $output/@vintage = $weighted_eff/@year:)
+			 	 	 return $new_root//text()
+			 	 	 } 
+			 	 	 };
+			 	 	 declare function local:check-keyword($values as node()*) as node()* {
+			 	 	 	unordered {
+			 	 		for $value in $values
+			 	 		let $input := $value/parent::*/parent::*,
+			 	 		    $keyword_name :=
+			 	 		        (: if($input/following-sibling::keyword[fn:exists(@primary-consumption)])
+			 	 			then :) $input/following-sibling::keyword/@primary-consumption
+			 	 			(: else $input/@name :), 
+			 	 		    $new_parent := element {local-name($input)} {$input/@*, 
+			 	 			$value/parent::*,
+			 	 		        element keyword { attribute primary-consumption {$keyword_name} }
+			 	 		        },
+			 	 		    $new_root := local:append-heirarchy($input/parent::*, $new_parent)
+			 	 		return $new_root//text()
+			 	 		}
+			 	 	};
+			 	 
+			 	 	 declare function local:run-primary-energy($scenarios as xs:string*, $regions as xs:string*, $collection as xs:string) as node()* { 	
+			 	 	 (: unordered { :)
+			 	 	 let $regionsG := if(not($regions[1] = 'Global'))
+			 	 	 		  then $regions
+			 	 	 		  else distinct-values(collection($collection)/scenario/world/*[@type='region']/@name)
+			 	 	 return
+			 	 	 for $scenario in $scenarios, 	    
+			 	 	 $region in $regionsG 	
+			 	 	 let $scenario_split := tokenize($scenario, ' '),
+                     $scenario_name := string-join($scenario_split[position() < last()], ' '),
+			 	 	 $scenario_date := $scenario_split[last()],
+			 	 	 $currTree := collection($collection)/scenario[@name = $scenario_name and @date = $scenario_date]/world/*[@type = 'region' and @name=$region]
+			 	 	 return (: get renewables from electricity :)
+			 	 	 local:get-primary-renewable($currTree/*[@type='sector' (: collapse :) and (@name='electricity' or @name='elect_td_bld' or starts-with(@name,'elec_'))]//keyword[fn:exists(@primary-renewable)]/preceding-sibling::output-primary/physical-output, local:get-weighted-eff($currTree/*[@type='sector' (: collapse :) and (@name='electricity' or starts-with(@name, 'elec_'))]//keyword[fn:exists(@average-fossil-efficiency)]/preceding-sibling::output-primary)) 
+					 		 	| (: get renewables from H2ProdCS :)
+					 	 	 	local:get-primary-renewable($currTree/supplysector[@name='H2 central production'](: /*[@type='subsector' (: collapse :) and fn:not(@name='electrolysis')] :)//keyword[fn:exists(@primary-renewable)]/preceding-sibling::output-primary/physical-output, local:get-weighted-eff($currTree/supplysector[@name='H2 central production']//keyword[fn:exists(@average-fossil-efficiency)]/preceding-sibling::output-primary)) 
+					 	 	 	| (: get renewables from H2ProdDist :)
+					 	 	 	local:get-primary-renewable($currTree/supplysector[@name='H2 forecourt production'](: /*[@type='subsector' (: collapse :) and fn:not(@name='electrolysis')] :)//keyword[fn:exists(@primary-renewable)]/preceding-sibling::output-primary/physical-output, local:get-weighted-eff($currTree/supplysector[@name='H2 forecourt production']//keyword[fn:exists(@average-fossil-efficiency)]/preceding-sibling::output-primary)) 
+					 	 	 	| (: get the primaries :)
+	 	 						(: local:check-keyword( :) $currTree//keyword[fn:exists(@primary-consumption)]/preceding-sibling::input-energy[not(contains(@name, 'water'))]/demand-physical/text() (: ) :)
+                                | (: get traditional biomass :)
+							    $currTree//*[@type='input' and @name='traditional biomass']/demand-physical/node()
+			 	 	 	
+			 	 	 (: } :)
+	 	 }; 
+            	 local:run-primary-energy((:scenarios:), (:regions:), (:collection:))
+                 
+            
+                ]]></xPath>
+        <comments/>
+        <labelRewriteList append-values="false">
+            <level name="input">
+                <rewrite from="H2 industrial" to=""/>
+                <rewrite from="traded RUS pipeline gas" to="b natural gas"/>
+                <rewrite from="traditional biomass" to="j traditional biomass"/>
+                <rewrite from="regional corn for ethanol" to="d biomass"/>
+                <rewrite from="regional biomassOil" to="d biomass"/>
+                <rewrite from="traded N.Amer pipeline gas" to="b natural gas"/>
+                <rewrite from="traded LNG" to="b natural gas"/>
+                <rewrite from="traded coal" to="c coal"/>
+                <rewrite from="solar-elect" to="h solar"/>
+                <rewrite from="elect_td_ind" to=""/>
+                <rewrite from="traded EUR pipeline gas" to="b natural gas"/>
+                <rewrite from="total biomass" to="d biomass"/>
+                <rewrite from="traded oil" to="a oil"/>
+                <rewrite from="nuclear-H2" to="e nuclear"/>
+                <rewrite from="exotic-elect" to="j breakthrough"/>
+                <rewrite from="wind-H2" to="g wind"/>
+                <rewrite from="biomass" to="d biomass"/>
+                <rewrite from="crude oil" to="a oil"/>
+                <rewrite from="nuclear-elect" to="e nuclear"/>
+                <rewrite from="solar-H2" to="h solar"/>
+                <rewrite from="regional natural gas" to=""/>
+                <rewrite from="traded unconventional oil" to="a oil"/>
+                <rewrite from="traded PAC pipeline gas" to="b natural gas"/>
+                <rewrite from="geothermal-elect" to="i geothermal"/>
+                <rewrite from="traded Afr_MidE pipeline gas" to="b natural gas"/>
+                <rewrite from="natural gas" to="b natural gas"/>
+                <rewrite from="wholesale gas" to=""/>
+                <rewrite from="hydro-elect" to="f hydro"/>
+                <rewrite from="traded natural gas" to="b natural gas"/>
+                <rewrite from="regional biomass" to="d biomass"/>
+                <rewrite from="coal" to="c coal"/>
+                <rewrite from="wind-elect" to="g wind"/>
+                <rewrite from="traded LA pipeline gas" to="b natural gas"/>
+            </level>
+        </labelRewriteList>
+    </supplyDemandQuery>
+    </aQuery>
+
+    <aQuery>
+	<supplyDemandQuery title="primary energy consumption by region (direct equivalent)">
+    <axis1 name="fuel">input[@name]</axis1>
+    <axis2 name="Year">demand-physical[@vintage]</axis2>
+    <xPath buildList="true" dataName="input" group="false" sumAll="false"><![CDATA[
+                     
+			 	 	 declare function local:append-heirarchy($parent as node(), $append as node()) as node() {
+			 	 		 let $scn := $parent/ancestor::scenario,
+			 			   	  $rgn := $parent/ancestor::region
+			 			   return
+			 			   	  document { element scenario {
+			 			 	  					$scn/@*,
+			 			 						element region {
+			 			 							$rgn/@*,
+			 			 							$append
+			 			 						}
+			 			 	  				}
+			 				}
+			 	 	 };  
+			 	 	 declare function local:get-primary-renewable($outputs as node()*) as node()* {
+			 	 	 unordered { 	
+			 	 	 for $output in $outputs 
+			 	 	 let $new_output :=  
+			 	 	 element input {
+			 	 		 attribute type {'input'},
+			 	 		 attribute name {$output/parent::*/following-sibling::keyword/@primary-renewable},
+			 	 		 element demand-physical {
+			 	 			 attribute vintage {$output/@vintage},
+			 	 			 attribute unit {$output/@unit},
+			 	 			 text { $output }
+			 	 		 }
+			 	 	 },
+			 	 	 $new_root := local:append-heirarchy($output/parent::*/parent::*, $new_output)
+			 	 	 return $new_root//text()
+			 	 	 } 
+			 	 	 };
+			 	 	 declare function local:run-primary-energy($scenarios as xs:string*, $regions as xs:string*, $collection as xs:string) as node()* { 	
+			 	 	 let $regionsG := if(not($regions[1] = 'Global'))
+			 	 	 		  then $regions
+			 	 	 		  else distinct-values(collection($collection)/scenario/world/*[@type='region']/@name)
+			 	 	 return
+			 	 	 for $scenario in $scenarios, 	    
+			 	 	 $region in $regionsG 	
+			 	 	 let $scenario_split := tokenize($scenario, ' '), 	    
+                     $scenario_name := string-join($scenario_split[position() < last()], ' '),
+			 	 	 $scenario_date := $scenario_split[last()],
+			 	 	 $currTree := collection($collection)/scenario[@name = $scenario_name and @date = $scenario_date]/world/*[@type = 'region' and @name=$region]
+			 	 	 return (: get renewables from electricity :)
+					 	 	 	local:get-primary-renewable($currTree/*[@type='sector' (: collapse :) and (@name='electricity' or @name='elect_td_bld' or starts-with(@name,'elec_'))]//keyword[fn:exists(@primary-renewable)]/preceding-sibling::output-primary/physical-output)
+					 		 	| (: get renewables from H2ProdCS :)
+					 	 	 	local:get-primary-renewable($currTree/supplysector[@name='H2 central production'](: /*[@type='subsector' (: collapse :) and fn:not(@name='electrolysis')] :)//keyword[fn:exists(@primary-renewable)]/preceding-sibling::output-primary/physical-output)
+					 	 	 	| (: get renewables from H2ProdDist :)
+					 	 	 	local:get-primary-renewable($currTree/supplysector[@name='H2 forecourt production'](: /*[@type='subsector' (: collapse :) and fn:not(@name='electrolysis')] :)//keyword[fn:exists(@primary-renewable)]/preceding-sibling::output-primary/physical-output)
+					 	 	 	| (: get the primaries :)
+	 	 						$currTree//keyword[fn:exists(@primary-consumption)]/preceding-sibling::input-energy/demand-physical/text()
+                                | (: get traditional biomass :)
+							    $currTree//*[@type='input' and @name='traditional biomass']/demand-physical/node()
+			 	 	 	
+	 	 }; 
+            	 local:run-primary-energy((:scenarios:), (:regions:), (:collection:))
+                 
+            
+                ]]></xPath>
+        <comments/>
+        <labelRewriteList append-values="false">
+            <level name="input">
+                <rewrite from="water_td_pri_C" to=""/>
+                <rewrite from="H2 industrial" to=""/>
+                <rewrite from="traded RUS pipeline gas" to="b natural gas"/>
+                <rewrite from="traditional biomass" to="j traditional biomass"/>
+                <rewrite from="regional corn for ethanol" to="d biomass"/>
+                <rewrite from="regional biomassOil" to="d biomass"/>
+                <rewrite from="traded N.Amer pipeline gas" to="b natural gas"/>
+                <rewrite from="traded LNG" to="b natural gas"/>
+                <rewrite from="traded coal" to="c coal"/>
+                <rewrite from="solar-elect" to="h solar"/>
+                <rewrite from="seawater" to=""/>
+                <rewrite from="elect_td_ind" to=""/>
+                <rewrite from="traded EUR pipeline gas" to="b natural gas"/>
+                <rewrite from="water_td_pri_W" to=""/>
+                <rewrite from="total biomass" to="d biomass"/>
+                <rewrite from="nuclear-H2" to="e nuclear"/>
+                <rewrite from="traded oil" to="a oil"/>
+                <rewrite from="k new" to="k new"/>
+                <rewrite from="exotic-elect" to="j breakthrough"/>
+                <rewrite from="wind-H2" to="g wind"/>
+                <rewrite from="biomass" to="d biomass"/>
+                <rewrite from="crude oil" to="a oil"/>
+                <rewrite from="nuclear-elect" to="e nuclear"/>
+                <rewrite from="solar-H2" to="h solar"/>
+                <rewrite from="regional natural gas" to=""/>
+                <rewrite from="traded unconventional oil" to="a oil"/>
+                <rewrite from="traded PAC pipeline gas" to="b natural gas"/>
+                <rewrite from="geothermal-elect" to="i geothermal"/>
+                <rewrite from="traded Afr_MidE pipeline gas" to="b natural gas"/>
+                <rewrite from="natural gas" to="b natural gas"/>
+                <rewrite from="wholesale gas" to=""/>
+                <rewrite from="traded natural gas" to="b natural gas"/>
+                <rewrite from="hydro-elect" to="f hydro"/>
+                <rewrite from="regional biomass" to="d biomass"/>
+                <rewrite from="coal" to="c coal"/>
+                <rewrite from="wind-elect" to="g wind"/>
+                <rewrite from="traded LA pipeline gas" to="b natural gas"/>
+            </level>
+        </labelRewriteList>
+    </supplyDemandQuery>
+	</aQuery>
+
+</queries>
