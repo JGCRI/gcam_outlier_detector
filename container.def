@@ -11,9 +11,10 @@ apt-get -y update && apt -y upgrade
 pip install pandas numpy matplotlib
 git clone https://github.com/JGCRI/gcamreader.git /gcamreader
 pip install /gcamreader
+%files 
+. /gcam_outlier_detector
 %environment
 export DEBIAN_FRONTEND=noninteractive
+export PWD=/gcam_outlier_detector
 %runscript
-exec /bin/bash "$@"
-%startscript
-exec /bin/bash "$@"
+python3 /gcam_outlier_detector/app.py "$@"
