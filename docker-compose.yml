@@ -1,8 +1,8 @@
 services:
-  analyzer:
+  detector:
     build: 
       context: .
-      target: analyzer
+      target: data_sci
     stdin_open: true
     tty: true
     # change this to the path of your data folder and add arguments to the command if needed
