@@ -20,5 +20,5 @@ The command above will run the detector on all included queries with default lab
 While it can take a while to run on a personal/local computer, it is still possible and made quite easy with Docker. The *docker-compose.yml* in the repo can be modified to change the arguments to the detector or the path of the database attached. The `command` and `volumes` section of the compose file needs to be modified according to your needs and local directory names. After doing so, running the following command should be enough.
 
 ```bash
-[user@localhost gcam_outlier_detector]$ docker compose up --build
+[user@localhost gcam_outlier_detector]$ docker compose up
 ```
