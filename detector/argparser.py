@@ -113,7 +113,7 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    "-h",
+    "-y",
     "--historical-year-end",
     type=int,
     help="The end year of the historical data. Default is 2020.",
