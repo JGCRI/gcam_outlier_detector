@@ -17,11 +17,13 @@ if __name__ == '__main__':
     divisor_label = args.divisor_label
     scenario_index = args.scenario_index
     historical_year_end = args.historical_year_end
+    csv_path = args.csv_path
+    graph_path = args.graph_path
 
     detector = Detector(db_path, queries=queries, x_label=x_label, divisor_label=divisor_label,
                         mapping_file=mapping_file, scenario_index=scenario_index,
                         aggregate=aggregate, threshold=threshold, historical_year_end=historical_year_end,
-                        interval=interval, include_normal=include_normal)
+                        interval=interval, include_normal=include_normal, csv_path=csv_path, graph_path=graph_path)
 
     query_index = args.query_index
     query_label = args.query_label

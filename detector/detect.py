@@ -15,7 +15,7 @@ class Detector:
 
     def __init__(self, db_path, queries, x_label, divisor_label=None, mapping_file=None, x_func=None,
                  scenario_index=0, aggregate='max', threshold=2, interval=1, historical_year_end=2020, 
-                 include_normal=False, maxMemory="8g"):
+                 include_normal=False, csv_path="csvs", graph_path="graphs", maxMemory="8g"):
         """Initialize the Detector class.
         
         Parameters
@@ -44,6 +44,10 @@ class Detector:
             The end year for the historical data, by default 2020.
         include_normal : bool, optional
             Whether to include normal data in the output, by default False.
+        csv_path : str, optional
+            Path to save the CSV files, by default "csvs".
+        graph_path : str, optional
+            Path to save the graph files, by default "graphs".
         maxMemory : str, optional
             The maximum memory to use for the database connection, by default "8g".
         """
@@ -59,7 +63,8 @@ class Detector:
         if x_func is None:
             x_func = self._default_calculate_x
         if not self.update_data(queries=queries, x_label=x_label, scenario_index=scenario_index, threshold=threshold,
-                                interval=interval, mapping_file=mapping_file, x_func=x_func, aggregate=aggregate):
+                                interval=interval, mapping_file=mapping_file, x_func=x_func, aggregate=aggregate, 
+                                csv_path=csv_path, graph_path=graph_path):
             raise ValueError("Failed to initialize data.")
         
 
@@ -213,9 +218,21 @@ class Detector:
             logger.error(f"File {file} does not exist.")
             return False
         return True
+    
+    def _make_dir(self, path):
+        """Create the specified directory if it does not exist.
+        
+        Parameters
+        ----------
+        path : str
+            The path to the directory to create.
+        """
+        if not os.path.exists(path):
+            os.makedirs(path)
 
     def update_data(self, queries=None, x_label=None, divisor_label=None, scenario_index=None,
-                    mapping_file=None, x_func=None, threshold=None, interval=None, aggregate=None):
+                    mapping_file=None, x_func=None, threshold=None, interval=None, aggregate=None, 
+                    csv_path=None, graph_path=None):
         """Update the data for the Detector class.
 
         Parameters
@@ -238,6 +255,10 @@ class Detector:
             The interval for the anomaly detection, by default None.
         aggregate : str, optional
             The aggregate function to use during detection, by default None.
+        csv_path : str, optional
+            Path to save the CSV files, by default None.
+        graph_path : str, optional
+            Path to save the graph files, by default None.
         
         Returns
         -------
@@ -276,6 +297,12 @@ class Detector:
                 logger.error(f"Invalid aggregate function passed: {aggregate}.")
                 return success
             self.aggregate = aggregate
+        if csv_path is not None:
+            self._make_dir(csv_path)
+            self.csv_path = csv_path
+        if graph_path is not None:
+            self._make_dir(graph_path)
+            self.graph_path = graph_path
         self.data = self.x_func()
         if self.data is None:
             logger.error("Failed to calculate x value.")
@@ -605,14 +632,14 @@ class Detector:
                 
                 plt.grid(True)
                 graph_name = f'{category}_{self.x_label}_{self.divisor_label}_{query_label}.jpg'
-                plt.savefig(f'graphs/{graph_name}')
+                plt.savefig(f'{self.graph_path}/{graph_name}')
                 print(f"graph saved: {graph_name}")
         
             csv_name = f'{category}_{query_label}_output.csv'
             combined_df.rename(columns={'x_var': 'GDP/Capita', 'y_var': 'Emissions/Capita'})
             if not self.include_normal:
                 combined_df = combined_df[combined_df['anamoly'] != 'No Anamoly']
-            combined_df.to_csv(f'csvs/{csv_name}', index=False)
+            combined_df.to_csv(f'{self.csv_path}/{csv_name}', index=False)
             print(f"csv saved: {csv_name}")
         
 
