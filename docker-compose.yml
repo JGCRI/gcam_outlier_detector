@@ -1,0 +1,14 @@
+services:
+  analyzer:
+    build: 
+      context: .
+      target: analyzer
+    stdin_open: true
+    tty: true
+    # change this to the path of your data folder and add arguments to the command if needed
+    command: ["python3", "app.py", "-d", "/database", "-n", "1"]
+    volumes:
+      - ./:/gcam_outlier_detector
+      # change this to the path of your database folder
+      - ../database:/database
+    working_dir: /gcam_outlier_detector
