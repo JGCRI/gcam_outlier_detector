@@ -22,3 +22,9 @@ While it can take a while to run on a personal/local computer, it is still possi
 ```bash
 [user@localhost gcam_outlier_detector]$ docker compose up
 ```
+
+## Query Format
+
+Since one column of the resulting dataframe of the query is used by the mapping file to aggregate certain rows to a single row depending on what matches the mapping file. This is how it's done:
+
+First it's checked whether the query xml element contains a `mappingVariable`. If it does then it will be used to map. If not, then it is checked whether a mapping file has been passed, if it is then it's checked if any column names in the query df and the mapping file match. If any column names match then the df is mapped over that column. Otherwise it is assumed then no mapping is needed on that df. 
