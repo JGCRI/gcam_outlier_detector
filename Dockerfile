@@ -7,4 +7,3 @@ RUN apt-get -y update && apt -y upgrade
 RUN pip install pandas numpy matplotlib
 RUN git clone https://github.com/JGCRI/gcamreader.git /gcamreader
 RUN pip install /gcamreader
-COPY jovyan/anamoly_detector /home/jovyan/anamoly_detector
